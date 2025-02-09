@@ -1,5 +1,6 @@
 # EC2-RDS-IAM
-EC2 is to be in a public subnet with the network connectivity to access RDS. Extract the secrets manually from the secret manager, use it in the EC2 to connect to instance.
+EC2 is to be in a public subnet with the network connectivity to access RDS. Use AWS CLI to fetch the database credentials from AWS Secrets Manager, use it in the EC2 to connect to RDS databsee instance.
+![alt text](image-3.png)
 
 # Architecture Overview
 EC2 instance in a Public Subnet: This instance will have internet access and connect to the RDS database.
