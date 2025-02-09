@@ -1,10 +1,12 @@
 # EC2-RDS-IAM
-EC2 is to be in a public subnet with the network connectivity to access RDS. Use AWS CLI to fetch the database credentials from AWS Secrets Manager, use it in the EC2 to connect to RDS databsee instance.
-![alt text](image-3.png)
+EC2 instance in a Public Subnet: This instance will have internet access and connect to the RDS database.
+In EC2, use AWS CLI init scipts to fetch the database credentials from AWS Secrets Manager and connect to 
+RDS in a Private Subnet: The database will not be accessible from the internet, enhancing security.
+
 
 # Architecture Overview
-EC2 instance in a Public Subnet: This instance will have internet access and connect to the RDS database.
-RDS in a Private Subnet: The database will not be accessible from the internet, enhancing security.
+![alt text](image-3.png)
+
 
 # Prerequisition
 A VPC is created, where ce9-coaching-shared-vpc is used.
