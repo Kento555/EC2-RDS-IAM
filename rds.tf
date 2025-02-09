@@ -1,3 +1,5 @@
+# Create RDS instance in Private Subnet 
+# Can be only accessed by EC2 inside same VPC
 resource "aws_db_instance" "rds" {
   allocated_storage      = 20
   engine                 = "mysql"

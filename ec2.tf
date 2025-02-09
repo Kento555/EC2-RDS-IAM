@@ -1,3 +1,7 @@
+# Create Instance in Public Subnet
+# Install necessary tools (mysql, jq, aws-cli).
+# Retrieve database credentials securely from AWS Secrets Manager
+# Connect to an RDS database and execute a query (SHOW DATABASES)
 resource "aws_instance" "ec2_instance" {
   ami                         = data.aws_ami.latest_amazon_linux.id
   instance_type               = var.instance_type
