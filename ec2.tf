@@ -11,8 +11,17 @@ resource "aws_instance" "ec2_instance" {
   user_data = <<-EOF
               #!/bin/bash
               yum update -y
-              yum install -y mysql
+              yum install -y mysql jq aws-cli
               echo "Connecting to RDS at ${aws_db_instance.rds.endpoint}" > /home/ec2-user/db.log
+              
+              # Retrieve secret from AWS Secrets Manager
+              SECRET_JSON=$(aws secretsmanager get-secret-value --secret-id ${aws_secretsmanager_secret.rds_secret.id} --query SecretString --output text)
+              DB_USER=$(echo $SECRET_JSON | jq -r '.username')
+              DB_PASSWORD=$(echo $SECRET_JSON | jq -r '.password')
+              DB_HOST=$(echo $SECRET_JSON | jq -r '.host')
+
+              echo "Connecting to RDS at $DB_HOST with user $DB_USER" > /home/ec2-user/db.log
+              mysql -h $DB_HOST -u $DB_USER -p$DB_PASSWORD -e "SHOW DATABASES;" >> /home/ec2-user/db.log
               EOF
 
   tags = {

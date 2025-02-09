@@ -1,3 +1,4 @@
+# Allow EC2 to Read from Secrets Manager
 resource "aws_iam_role" "ec2_role" {
   name = "ec2-secrets-access-role"
 

@@ -12,6 +12,10 @@ A VPC is created, where ce9-coaching-shared-vpc is used.
 Code:
 mysql -h terraform-20250209095654857700000001.chheppac9ozc.us-east-1.rds.amazonaws.com -u admin -p
 
-# Use telnet or nc to ensure EC2 can reach RDS.
-nc -zv terraform-20250209095654857700000001.chheppac9ozc.us-east-1.rds.amazonaws.com 3306
 
+# Check the logs to verify if it connected to RDS
+code:
+cat /home/ec2-user/db.log
+Expected outcome:
+
+![alt text](image.png)
